@@ -1,0 +1,15 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch('MYSQL_USER') { 'KEYAKI_user' } %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'aishadoite91' } %>
+  host: db
+
+development:
+  <<: *default
+  database: KEYAKI_app_development
+
+test:
+  <<: *default
+  database: KEYAKI_app_test
