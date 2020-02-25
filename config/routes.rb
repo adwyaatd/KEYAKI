@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  get 'home/top'
   root "home#top"
+  get 'home/top'
+  get "users/new"
+  get "posts/new"
+  get "replies/new"
 end
