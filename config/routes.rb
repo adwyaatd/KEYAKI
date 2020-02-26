@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  root "home#top"
+  root "homes#top"
 
-  get "home/top"
+  resources :homes do
+    member do
+      get "top"
+    end
+  end
   
-  get "users/new"
-  
-  get "posts/new"
+  resources :users 
+
+  resources :posts
 
   get "replies/new"
 
