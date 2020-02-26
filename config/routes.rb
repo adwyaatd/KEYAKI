@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   end
   
   resources :users 
+  resources :posts do
+    resources :replies
+  end
 
-  resources :posts
-
-  get "replies/new"
+  get "login_form", to:"users#login_form"
+  post "login", to:"users#login"
+  post "logout", to:"users#logout"
 
 end

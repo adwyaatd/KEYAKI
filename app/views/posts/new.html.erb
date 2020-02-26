@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8">
       <div class="flex">
-        <%= form_tag "/posts",method: :post, multipart: true do %>
+        <%= form_tag posts_path,method: :post, multipart: true do %>
           <p>テーマを入力してください</p>
           <input name="theme" value="<%= @post.theme %>">
           <p>アイコンを登録してください</p>

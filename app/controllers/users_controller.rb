@@ -17,10 +17,14 @@ class UsersController < ApplicationController
       redirect_to homes_url
     else
       @name=params[:name]
-      @email = params[:email]
-      @password = params[:password]
+      @email=params[:email]
+      @password=params[:password]
       render template: "users/new"
     end
+  end
+
+  def show
+    @user=User.find_by id:params[:id]
   end
 
   def login
@@ -32,5 +36,11 @@ class UsersController < ApplicationController
     else
       render template: "homes/top" 
     end
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/")
   end
 end
