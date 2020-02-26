@@ -14,12 +14,12 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id]=@user.id
       flash[:notice]="ユーザー登録完了です"
-      redirect_to("/home/home")
+      redirect_to homes_url
     else
       @name=params[:name]
       @email = params[:email]
       @password = params[:password]
-      render("home/top")
+      render template: "users/new"
     end
   end
 
@@ -28,9 +28,9 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id]=@user.id
       flash[:notice]="ログインしました"
-      redirect_to("/home/#{@user.id}")
+      redirect_to homes_url
     else
-      render("home/top")
+      render template: "homes/top" 
     end
   end
 end
