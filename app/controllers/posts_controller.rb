@@ -16,12 +16,16 @@ class PostsController < ApplicationController
     end
     if @post.save
       flash[:notice]="スレッドを新規作成しました！"
-      redirect_to homes_url
+      redirect_to post_url
     else
       @theme=params[:theme]
       @image_name=params[:image_name]
-      render template: "homes/index"
+      render template: "posts/show"
     end
+  end
+
+  def index
+    @posts=Post.all
   end
 
   def destroy
@@ -29,5 +33,11 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = "スレッドを削除しました"
     redirect_to homes_url
+  end
+
+  def show
+    @post=Post.find params[:id]
+    @replies=@post.replies
+    @reply=Reply.new
   end
 end
