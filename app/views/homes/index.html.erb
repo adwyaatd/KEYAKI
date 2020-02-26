@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="flex">
+        <% @posts.each do |post| %>
+          <img class="w-75" src="<%="/post_images/#{post.image_name}"%>">
+          <h1><%=link_to post.theme,post_path(post) %></h1>
+          <%= post.image_name%>
+          <%= post.created_at%>
+
+          <%= link_to "削除",post_path(post),method: :delete%>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <%= render partial:'layouts/menu' %>
+    </div>
+  </div>
+</div>

@@ -2,13 +2,18 @@
   <div class="row">
     <div class="col-md-8">
       <div class="flex">
-        <img src="" alt="" class="">
-        <h1>題名</h1>
-        <p>1111111111111111111111</p>
+        <%= form_tag posts_path,method: :post, multipart: true do %>
+          <p>テーマを入力してください</p>
+          <input name="theme" value="<%= @post.theme %>">
+          <p>アイコンを登録してください</p>
+          <input name="image" type="file">
+
+          <input type="submit" value="作成">
+        <% end %>
       </div>
     </div>
     <div class="col-md-4">
-      <%= render 'layouts/menu' %>
+      <%= render partial:'layouts/menu' %>
     </div>
   </div>
 </div>
