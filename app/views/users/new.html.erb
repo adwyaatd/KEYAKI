@@ -1,2 +1,23 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="flex">
+        <%= form_tag("/users/create") do %>
+          <p>ユーザー名</p>
+          <input name="name" value="<%= @user.name %>">
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @user.email %>">
+          <p>パスワード</p>
+          <input name="password" type="password" value="<%= @user.password %>">
+          <p>アイコン</p>
+          <input name="image" type="file">
+
+          <input type="submit" value="新規登録">
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <%= render 'layouts/menu' %>
+    </div>
+  </div>
+</div>
