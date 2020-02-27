@@ -1,27 +1,18 @@
 <div  class="menu">
-      <div class="subbar">
-        <div class="">
-          <h2><%= link_to "スレッドを作成する",new_post_path %></h2>
-        </div>
-        <div class="">
-          <h1>カテゴリー</h1>
-          <p>----------</p>
-          <p>----------</p>
-          <p>----------</p>
-          <p>----------</p>
-          <p>----------</p>
-          <p>----------</p>
-        </div>
-        <!--
-        <% if @current_user %>
-          <li>
-          <img src="<%="/user_images/#{@current_user.image_name}"%>">
-          <br><%= link_to(@current_user.name,"/users/#{@current_user.id}/edit")%>
-          </li>
-          <li>
-            <%= link_to("ホームへ戻る","/users/#{@current_user.id}") %>
-          </li> 
-        <% end %>
-         -->
+  <div class="subbar">
+    <div class="">
+      <h2><%= link_to "スレッドを作成する",new_post_path %></h2>
     </div>
+    <div class="border rounded mt-5">
+      <h1 class="border rounded">カテゴリー</h1>
+      <% categories= Category.all %>
+      <%= categories.each do|category|%>
+        <%#= link_to c.name, %>
+        <span>・</span><%= category.name %>
+          <br>
+      <% end %>
+      <br>
+      <%= link_to "カテゴリを追加",new_category_path%>
     </div>
+  </div>
+</div>
