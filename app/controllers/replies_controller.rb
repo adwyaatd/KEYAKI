@@ -1,4 +1,8 @@
 class RepliesController < ApplicationController
+
+  before_action:autenticate_user
+  before_action:ensure_current_user,only:[:edit,:update,:destroy]
+
   def new
   end
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "homes#top"
+  root "homes#index"
 
   resources :homes do
     member do
@@ -7,12 +7,14 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users 
   resources :posts do
     resources :replies
   end
+  resources :users 
+  resources :categories 
 
   get "login_form", to:"users#login_form"
+  get "guest_login", to:"users#guest_login"
   post "login", to:"users#login"
   post "logout", to:"users#logout"
 

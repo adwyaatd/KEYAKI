@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>KEYAKI</title>
+    <title>KEYAKIの掲示板</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     
@@ -15,34 +15,43 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4" style="background-color:">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/homes/">KEYAKI</a>
+        <a class="navbar-brand" href="/homes/">KEYAKIの掲示板</a>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto d-flex align-items-center ">
               <% if @current_user %>
-                <li class="nav-item">
-                    <a class="nav-link" id="logout">ログアウト1</a>
-                    <%= link_to"ログアウト2",logout_path,method: :post %>
-                </li>
-                <li class="nav-item">
+                <li class="nav-item mx-1 fc-w">
                     <%= link_to @current_user.name,user_path(@current_user)%>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">検索</a>
+                <li class="nav-item mx-1 fc-w">
+                    <%= link_to"ログアウト",logout_path,method: :post %>
+                </li>
+                <li class="nav-item mx-1 fc-w">
+                    <a class="nav-link">検索</a>
+                    <%= form_tag homes_path,method: :get do%>
+                      <%=text_field_tag :search %>
+                      <%= submit_tag "検索", name: nil %>
+                    <% end %>
                 </li>
               <% else %>
-                <li class="nav-item">
+                <li class="nav-item mx-1 fc-w">
                     <%= link_to "新規ユーザー登録",new_user_path %>
                 </li>
-                <li class="nav-item">
-                    <a id="login" >ログイン1</a>
+                <li class="nav-item mx-1 fc-w">
                     <%= link_to "ログイン",login_form_path %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to "ゲストログイン",login_form_path %>
+                <li class="nav-item mx-1 fc-w">
+                    <%= link_to "ゲストログイン",guest_login_path %>
+                </li>
+                <li class="nav-item mx-1 fc-w">
+                    <a class="nav-link">検索</a>
+                    <%= form_tag homes_path,method: :get do%>
+                      <%=text_field_tag :search %>
+                      <%= submit_tag "検索", name: nil %>
+                    <% end %>
                 </li>
               <% end %>
             </ul>

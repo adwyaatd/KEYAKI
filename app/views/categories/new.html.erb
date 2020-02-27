@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="flex">
+      <h1>カテゴリ追加</h1>
+      <%= form_with model: @category do |f|%>
+        <p>
+          <%= f.label :name,"カテゴリ名"%>
+          <br>
+          <%= f.text_field :name %>
+        </p>
+        
+        <%= f.submit "作成する"%>
+      <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <%= render partial:'layouts/menu' %>
+    </div>
+  </div>
+</div>
