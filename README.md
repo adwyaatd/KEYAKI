@@ -1,24 +1,44 @@
-# README
+# アプリ名：KEYAKI
+掲示板サイトです。
+「3日でDocker、ECSを習得して掲示板サイトを作り、デプロイする」というチャレンジで作りました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+優先順位の高い機能から実装したため、
+UIやデザインをもっとよいものにしたり、横断検索可能な検索機能の追加などは現在作業中です。
 
-Things you may want to cover:
+2つ目のポートフォリオサイトです。
+1つ目はこちらです。 
+→https://github.com/adwyaatd/TUMIKI
 
-* Ruby version
+# 機能一覧 
+1. ログイン・ログアウト機能 
+2. 閲覧・投稿機能 
+3. スレッド機能 (スレッドにレスをつけていくスタイル) 
+4. カテゴリ設定機能(スレッドごと / 1つのスレッドに複数付与可能) 
+5. 検索機能 (スレッドの検索) 
 
-* System dependencies
+#　追加中の主要機能
+* 横断検索機能
+* ECS,ECRを使用したデプロイ（設定・コンテナ稼働までは達成。WEB上で表示されない問題を解決中）
 
-* Configuration
 
-* Database creation
+# 使用技術
+* Ruby
+* Ruby on Rails
+* AWS
+    * ECS
+    * ECR
+    * ALB
+    * Route53
+    * VPC
+    * EC2
+    * RDS
+* Docker
+* nginx
+* HTML
+* SASS
+* Bootstrap
+* RSpec
+* Mysql
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+【追加予定】
+* CircleCI
