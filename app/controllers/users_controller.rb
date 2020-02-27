@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_action:forbid_login_user,only:[:new,:create,:login_form,:login]
+  before_action:ensure_current_user,only:[:edit,:update,:destroy]
+  
   def new
     @user=User.new
   end
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id]=@user.id
-      flash[:notice]="ユーザー登録完了です"
+      flash[:notice]="ユーザー登録完了です。ログインしました"
       redirect_to homes_url
     else
       @name=params[:name]
@@ -34,8 +38,15 @@ class UsersController < ApplicationController
       flash[:notice]="ログインしました"
       redirect_to homes_url
     else
-      render template: "homes/top" 
+      @error_message = "メールアドレス又はパスワードが間違っています"
+      @email = params[:email]
+      @password = params[:password]
+      render template: "users/login_form" 
     end
+  end
+
+  def guest_login
+    @user =User.find_by(email:params[:email])
   end
 
   def logout

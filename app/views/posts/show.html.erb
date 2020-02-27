@@ -1,36 +1,53 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8">
-      <div class="flex">
-          <img class="w-25" src="<%="/post_images/#{@post.image_name}"%>">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-7">
+      <div class="border rounded">
+        <div class="border rounded">
+          <div class="image-75">
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image %>
+            <% end %>
+          </div>
           <h1><%= @post.theme %></h1>
-          <%= @post.image_name%>
+          <p><%= @post.text%></p>
+          <span>カテゴリ</span>
+            <% @post.categories.each do |category|%>
+              <% category.name%>
+            <% end %>
           <%= @post.created_at%>
-          <%= link_to "削除",post_path(@post),method: :delete%>
-      </div>
-
-      <h2>コメント一覧</h2>
-      <% @replies.each do |r|%>
-        <div class="flex reply">
-          <%= r.text%>
-          <p>sss</p>
-          <%#<img src="<%= "/reply_images/#{r.image_name}"%>">
-          <% r.created_at%>
-          <%= link_to "削除",post_reply_path(r),method: :delete%>
+          <% if @post.user_id == @current_user.id%>
+            <%= link_to "削除",post_path(@post),method: :delete%>
+          <% end %>
         </div>
-      <% end %>
 
-      <div class="">
-        <h3>コメントを投稿する</h3>
-        <%= form_for [@post,@reply] do |f| %>
-          <%= f.text_area :text %>
-          <%= f.hidden_field :post_id, value: @post.id %>
-          <br>
-          <%= f.submit "投稿する" %>
-        <% end %>
+        <div class="border rounded">
+          <h2>コメント一覧</h2>
+          <% @replies.each do |r|%>
+            <div class="flex reply">
+              <%= r.text%>
+              <p>sss</p>
+              <% r.created_at%>
+              <% if r.user_id == @current_user.id%>
+                <%= link_to "削除",post_reply_path(r),method: :delete%>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="border rounded">
+          <h3>コメントを投稿する</h3>
+          <%= form_for [@post,@reply] do |f| %>
+            <%= f.text_area :text %>
+            <%= f.hidden_field :post_id, value: @post.id %>
+            <br>
+            <%= f.submit "投稿する" %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 border rounded">
       <%= render partial:'layouts/menu' %>
     </div>
   </div>

@@ -1,18 +1,47 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8">
+      <% @post.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+      <% end %>
       <div class="flex">
-        <%= form_tag posts_path,method: :post, multipart: true do %>
-          <p>テーマを入力してください</p>
-          <input name="theme" value="<%= @post.theme %>">
-          <p>アイコンを登録してください</p>
-          <input name="image" type="file">
+      <%= form_with model: @post do |f|%>
+        <div class="form">
+          <%= f.label :theme,"テーマを入力してください"%>
+          <br>
+          <%= f.text_field :theme %>
+        </div>
 
-          <input type="submit" value="作成">
-        <% end %>
+        <div class="form">
+          <%= f.label :text,"テーマの意見・詳細など"%>
+          <br>
+          <%= f.text_area :text %>
+        </div>
+
+        <p>
+          <%= f.label :image,"アイコンを登録して下さい"%>
+          <br>
+          <%= f.file_field :image %>
+        </p>
+
+        <p>
+          <%= f.label :category,"カテゴリ" %>
+          <br>
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+            <%= category.label do %>
+              <%= category.check_box %>
+              <%= category.text%>
+            <% end %>
+          <% end %>
+        </p>
+        
+        <%= f.submit "作成する"%>
+      <% end %>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 border rounded">
       <%= render partial:'layouts/menu' %>
     </div>
   </div>
