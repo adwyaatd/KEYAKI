@@ -6,7 +6,9 @@
           <h1><%= @post.theme %></h1>
           <%= @post.image_name%>
           <%= @post.created_at%>
-          <%= link_to "削除",post_path(@post),method: :delete%>
+          <% if @post.user_id == @current_user.id%>
+            <%= link_to "削除",post_path(@post),method: :delete%>
+          <% end %>
       </div>
 
       <h2>コメント一覧</h2>
@@ -16,7 +18,9 @@
           <p>sss</p>
           <%#<img src="<%= "/reply_images/#{r.image_name}"%>">
           <% r.created_at%>
-          <%= link_to "削除",post_reply_path(r),method: :delete%>
+          <% if r.user_id == @current_user.id%>
+            <%= link_to "削除",post_reply_path(r),method: :delete%>
+          <% end %>
         </div>
       <% end %>
 

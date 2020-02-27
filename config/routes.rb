@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "homes#top"
+  root "homes#index"
 
   resources :homes do
     member do

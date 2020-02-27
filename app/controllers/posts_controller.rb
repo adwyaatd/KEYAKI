@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+
+  before_action:autenticate_user
+  before_action:ensure_current_user,only:[:destroy]
+
   def new
     @post=Post.new
   end

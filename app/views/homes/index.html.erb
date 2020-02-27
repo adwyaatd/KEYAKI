@@ -7,8 +7,6 @@
           <h1><%=link_to post.theme,post_path(post) %></h1>
           <%= post.image_name%>
           <%= post.created_at%>
-
-          <%= link_to "削除",post_path(post),method: :delete%>
         <% end %>
       </div>
     </div>
