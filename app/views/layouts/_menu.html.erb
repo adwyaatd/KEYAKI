@@ -6,9 +6,9 @@
     <div class="border rounded mt-5">
       <h1 class="border rounded">カテゴリー</h1>
       <% categories= Category.all %>
-      <%= categories.each do|category|%>
+      <% categories.each do|c|%>
         <%#= link_to c.name, %>
-        <span>・</span><%= category.name %>
+        <span>・</span><%= c.name %>
           <br>
       <% end %>
       <br>
