@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :replies
   end
   resources :users 
-  resources :categories 
+  resources :categories
+  resources :likes
+  
 
   get "login_form", to:"users#login_form"
   get "guest_login", to:"users#guest_login"
