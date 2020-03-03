@@ -37,6 +37,7 @@ class PostsController < ApplicationController
     @post=Post.find params[:id]
     @replies=@post.replies
     @reply=Reply.new
+    @categories=@post.categories
   end
 
   private
