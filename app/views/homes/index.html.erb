@@ -8,7 +8,7 @@
           <div class="border rounded">
             <div class="image-75">
               <% if post.image.attached? %>
-                <%= image_tag asset_path post.image %>
+                <%= image_tag post.image %>
               <% end %>
             </div>
               <h3><%=link_to post.theme,post_path(post) %></h3>
@@ -22,7 +22,6 @@
     </div>
     <div class="col-md-4 border rounded">
       <%= render partial:'layouts/menu' %>
-      
     </div>
   </div>
 </div>
