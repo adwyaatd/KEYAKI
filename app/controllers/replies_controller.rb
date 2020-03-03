@@ -26,10 +26,10 @@ class RepliesController < ApplicationController
   end
 
   def destroy
-    @reply=Reply.find_by id:params[:post_id]
+    @reply=Reply.find_by id:params[:id]
     @reply.destroy
     flash[:notice] = "コメントを削除しました"
-    redirect_to post_url
+    redirect_to @reply
   end
 
   private
