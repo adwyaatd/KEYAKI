@@ -21,15 +21,14 @@ class RepliesController < ApplicationController
     else
       render template: "posts/show"
     end
-
-    
   end
 
   def destroy
     @reply=Reply.find_by id:params[:id]
     @reply.destroy
     flash[:notice] = "コメントを削除しました"
-    redirect_to @reply
+    # @post=Post.find_by id:params[:post_id]
+    redirect_to homes_url
   end
 
   private

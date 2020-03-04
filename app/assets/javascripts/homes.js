@@ -12,9 +12,17 @@ $(document).on('turbolinks:load', function() {
   });
  
   $('.close-modal').click(function(){
-    $('#login-modal').fadeOut();
+   $('#login-modal').fadeOut();
    $('#signup-modal').fadeOut();
    $('#guest-login-modal').fadeOut();
   });
+  
+  $('li').on('click','#logout',function(){
+		$('#logout-modal').fadeIn();
+	});
+
+	$('#logout-no,.close-modal').on('click',function(){
+		$('#logout-modal').fadeOut();
+	});
  
  });

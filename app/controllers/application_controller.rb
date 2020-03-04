@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
   
 
   def ensure_current_user
-    if @current_user.id != params[:id].to_i
-      flash[:notice]="他のアカウントでの操作はできません"
-      redirect_to homes_url(@current_user)
-    end
+    # if @current_user.id != params[:id].to_i
+    #   flash[:notice]="他のアカウントでの操作はできません"
+    #   redirect_to homes_url(@current_user)
+    # end
   end
 
   def autenticate_user
