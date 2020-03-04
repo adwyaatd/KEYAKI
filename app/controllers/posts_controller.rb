@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post=Post.find params[:id]
+    @post=Post.find_by id:params[:id]
     @replies=@post.replies
     @reply=Reply.new
     @categories=@post.categories
