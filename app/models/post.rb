@@ -8,9 +8,9 @@ class Post < ApplicationRecord
 
   validates :theme, {presence: true, length: {maximum: 150}}
 
-  def self.search(search)
-    if search
-      Post.where(['theme LIKE ?', "%#{search}%"])
+  def self.search(search,post_or_reply)
+    if post_or_reply == "1"
+      Post.where(["theme LIKE ? OR text LIKE ?", "%#{search}%","%#{search}%"])
     else
       Post.all
     end

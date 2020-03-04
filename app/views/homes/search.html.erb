@@ -4,6 +4,7 @@
     </div>
     <div class="col-md-7">
       <div class="border rounded">
+        <%if @post_or_reply == "1"%>
           <% @posts.each do |post| %>
             <div class="border rounded">
               <div class="image-75">
@@ -19,16 +20,37 @@
                 <%# end %>
             </div>
           <% end %>
+        <% elsif @post_or_reply == "2" %>
+          <% @replies.each do |r| %>
+            <div class="border rounded">
+              <div class="image-75">
+                <%# if r.image.attached? %>
+                  <%#= image_tag r.image %>
+                <%# end %>
+              </div>
+                <h3><%= r.text %></h3>
+                <% @post=Post.find_by id:r.post_id %>
+                <span>【スレッド名】:</span>
+                <%=link_to @post.theme,post_path(@post)%>
+                <br>
+                <%= r.created_at%>
+                <%# if post.user_id == @current_user.id%>
+                  <%#= link_to "削除",post_path(post),method: :delete%>
+                <%# end %>
+            </div>
+          <% end %>
+        <% else %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-4 border rounded">
       <%= render partial:'layouts/menu' %>
-      <!--<p>jQuery稼働テスト</p>
+    <!--  <p>jQuery稼働テスト</p>
       <script type="text/javascript">
         $(document).ready(function() {
           $("p").text("jQuery稼働テスト(稼働中)");
         });
-      </script>-->
+      </script> -->
     </div>
   </div>
 </div>

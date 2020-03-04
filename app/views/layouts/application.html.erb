@@ -10,8 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= favicon_link_tag('favicon.ico') %>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    $(function(){ // if document is ready
+      alert('jQuery is ready.')
+    });
+    </script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
   <body>
     <header>
@@ -27,11 +32,13 @@
                     <%= link_to @current_user.name,user_path(@current_user)%>
                 </li>
                 <li class="nav-item mx-1 fc-w">
-                    <%= link_to"ログアウト",logout_path,method: :post %>
+                  <a href="#" id="logout">ログアウト</a> 
+                    <%#= link_to"ログアウト",logout_path,method: :post %>
                 </li>
                 <li class="nav-item mx-1 fc-w">
                     <a class="nav-link">検索</a>
-                    <%= form_tag homes_path,method: :get do%>
+                    <%= form_tag search_homes_path,method: :get do%>
+                      <%= select_tag(:option, options_for_select([["スレッド","1"],["コメント","2"]]))%>
                       <%=text_field_tag :search %>
                       <%= submit_tag "検索", name: nil %>
                     <% end %>
@@ -49,6 +56,7 @@
                 <li class="nav-item mx-1 fc-w">
                     <a class="nav-link">検索</a>
                     <%= form_tag homes_path,method: :get do%>
+                      <%= select_tag(:option, optoins_for_select([["スレッド","1"],["コメント","2"]]))%>
                       <%=text_field_tag :search %>
                       <%= submit_tag "検索", name: nil %>
                     <% end %>
@@ -66,19 +74,20 @@
     <% end %>
     <%= yield %>
 
-    <div class="logout-modal-wrapper" id="logout-modal">
-      <div class="modal">
+    <div class="modal-wrapper" id="logout-modal">
+      <div class="">
         <div class="close-modal">
-        <i class="fa fa-2x fa-times"></i>
+          <i class="fa fa-2x fa-times"></i>
         </div>
         <div id="login-form">
-        <h2>ログアウトしますか</h2>
+          <h2>ログアウトしますか</h2>
           <div class="yes-no">
             <%= link_to("はい","/logout",{method:"post"})%>
           </div>
           <div id="logout-no" class="yes-no">
-          <a>いいえ</a>
+            <a>いいえ</a>
           </div>
+        </div>
       </div>
     </div>
 

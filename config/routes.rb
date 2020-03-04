@@ -2,17 +2,18 @@ Rails.application.routes.draw do
   root "homes#index"
 
   resources :homes do
-    member do
-      get "top"
+    collection do
+      get "search"
     end
   end
   
-  resources :posts do
-    resources :replies
+  resources :posts,shallow: true do
+    resources :replies do
+      resources :likes
+    end
   end
   resources :users 
   resources :categories
-  resources :likes
   
 
   get "login_form", to:"users#login_form"
