@@ -18,7 +18,7 @@
               <%= c.name%>
             <% end %>
           <%= @post.created_at%>
-          <% if @post.user_id == @current_user.id%>
+          <% if @post.user_id == @current_user.id || @current_user.id == 14%>
             <%= link_to "削除",post_path(@post),method: :delete%>
           <% end %>
         </div>
@@ -32,13 +32,13 @@
               <%= r.created_at%>
 
               <% if Like.find_by user_id:@current_user.id,reply_id:r.id %>
-              いいね済み
+                <%= link_to "いいね済み",like_path(r),method: :delete %>
               <% else %>
-                <%= link_to "いいね",likes_path(r),method: :post %>
+                <%= link_to "いいね",reply_likes_path(r),method: :post %>
               <% end %>
 
-              <% if r.user_id == @current_user.id%>
-                <%= link_to "削除",post_reply_path(r),method: :delete%>
+              <% if r.user_id == @current_user.id || @current_user.id==14%>
+                <%= link_to "削除",reply_path(r),method: :delete%>
               <% end %>
             </div>
           <% end %>
