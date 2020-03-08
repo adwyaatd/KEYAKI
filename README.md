@@ -21,6 +21,9 @@ URL:https://keyaki-h2.herokuapp.com/
 * ECS,ECRを使用したデプロイ（設定・コンテナ稼働までは達成。WEB上で表示されない問題を解決中）
 * テスト
 
+# 【その他】
+* GitHub　issue、Pull Requestで仮想チーム開発
+
 # 使用技術
 * Ruby
 * Ruby on Rails
