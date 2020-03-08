@@ -22,7 +22,7 @@ URL:https://keyaki-h2.herokuapp.com/
 * テスト
 
 # 【その他】
-* GitHub　issue、Pull Requestで仮想チーム開発
+* GitHub　issue、Pull Requestでチーム開発を仮想して管理を行っています。
 
 # 使用技術
 * Ruby
