@@ -51,7 +51,7 @@
                 <li class="nav-item mx-1 fc-w">
                     <a class="nav-link">検索</a>
                     <%= form_tag homes_path,method: :get do%>
-                      <%= select_tag(:option, optoins_for_select([["スレッド","1"],["コメント","2"]]))%>
+                      <%= select_tag(:option, options_for_select([["スレッド","1"],["コメント","2"]]))%>
                       <%=text_field_tag :search %>
                       <%= submit_tag "検索", name: nil %>
                     <% end %>
