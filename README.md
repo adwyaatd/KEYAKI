@@ -20,7 +20,6 @@ URL:https://keyaki-h2.herokuapp.com/
 
 # 【追加中の主要機能】
 * ECS,ECRを使用したデプロイ（設定・コンテナ稼働までは達成。WEB上で表示されない問題を解決中）
-* テスト
 
 # 【その他】
 * GitHub　issue、Pull Requestでチーム開発を仮想して管理を行っています。
