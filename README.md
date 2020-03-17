@@ -16,6 +16,7 @@ URL:https://keyaki-h2.herokuapp.com/
 3. スレッド機能 (スレッドにレスをつけていくスタイル) 
 4. カテゴリ設定機能(スレッドごと / 1つのスレッドに複数付与可能) 
 5. 検索機能 (スレッド/コメントの検索) 
+6. 画像保存機能
 
 # 【追加中の主要機能】
 * ECS,ECRを使用したデプロイ（設定・コンテナ稼働までは達成。WEB上で表示されない問題を解決中）
@@ -35,6 +36,7 @@ URL:https://keyaki-h2.herokuapp.com/
     * VPC
     * EC2
     * RDS
+    * S3
 * Docker
 * nginx
 * HTML
