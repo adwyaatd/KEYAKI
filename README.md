@@ -43,8 +43,13 @@ URL:https://keyaki-h2.herokuapp.com/
 * SASS
 * Bootstrap
 * jQuery
-* RSpec
 * Mysql
+
+【テスト環境】  
+* RSpec
+* Capybara
+* Selenium
+* FactoryBot
 
 【追加予定】
 * CircleCI
