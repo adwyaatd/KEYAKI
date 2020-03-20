@@ -13,7 +13,7 @@ Capybara.configure do |config|
   config.automatic_label_click = false 
 end
 
-Capybara.register_driver :chrome do |app|
+Capybara.register_driver :selenium_chrome_headless do |app|
 
   options = Selenium::WebDriver::Chrome::Options.new
 
@@ -21,7 +21,10 @@ Capybara.register_driver :chrome do |app|
   options.add_argument('disable-translate')          
   options.add_argument('disable-extensions')         
   options.add_argument('disable-infobars')           
-  options.add_argument('window-size=1280,960')        
+  options.add_argument('window-size=1280,960') 
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
 
 
   # ブラウザーを起動する
@@ -30,3 +33,5 @@ Capybara.register_driver :chrome do |app|
     browser: :chrome,
     options: options)
 end
+
+Capybara.javascript_driver = :selenium_chrome_headless
