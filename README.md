@@ -6,7 +6,7 @@
 UIやデザインの改良は現在作業中です。
 URL:https://keyaki-h2.herokuapp.com/
 
-2つ目のポートフォリオサイトです。
+2つ目のオリジナルWEBアプリです。
 1つ目はこちらです。 
 →https://github.com/adwyaatd/TUMIKI
 
