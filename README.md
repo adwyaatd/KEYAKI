@@ -49,6 +49,3 @@ URL:https://keyaki-h2.herokuapp.com/
 * Capybara
 * Selenium
 * FactoryBot
-
-【追加予定】
-* CircleCI
