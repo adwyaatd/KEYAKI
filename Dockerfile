@@ -1,4 +1,4 @@
-FROM ruby:2.5.1
+FROM ruby:2.6.3
 
 # リポジトリを更新し依存モジュールをインストール
 RUN apt-get update -qq && \
@@ -18,19 +18,19 @@ RUN apt-get update && apt-get install -y unzip && \
     sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
     apt-get update && apt-get install -y google-chrome-stable
 
-# ルート直下にwebappという名前で作業ディレクトリを作成（コンテナ内のアプリケーションディレクトリ）
-RUN mkdir /webapp
-WORKDIR /webapp
+# ルート直下にkeyakiという名前で作業ディレクトリを作成（コンテナ内のアプリケーションディレクトリ）
+RUN mkdir /keyaki
+WORKDIR /keyaki
 
 # ホストのGemfileとGemfile.lockをコンテナにコピー
-ADD Gemfile /webapp/Gemfile
-ADD Gemfile.lock /webapp/Gemfile.lock
+ADD Gemfile /keyaki/Gemfile
+ADD Gemfile.lock /keyaki/Gemfile.lock
 
 # bundle installの実行
 RUN bundle install
 
 # ホストのアプリケーションディレクトリ内をすべてコンテナにコピー
-ADD . /webapp
+ADD . /keyaki
 
 # puma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets

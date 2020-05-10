@@ -7,28 +7,31 @@ services:
       - ./environments/db.env
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/webapp
-      - public-data:/webapp/public
-      - tmp-data:/webapp/tmp
-      - log-data:/webapp/log
+      - .:/keyaki
+      - public-data:/keyaki/public
+      - tmp-data:/keyaki/tmp
+      - log-data:/keyaki/log
     depends_on:
       - db
+    container_name: KEYAKI_app
   db:
     image: mysql:5.7
     env_file:
       - ./environments/db.env
     volumes:
       - db-data:/var/lib/mysql
+    container_name: KEYAKI_db
   web:
     build:
       context: containers/nginx
     volumes:
-      - public-data:/webapp/public
-      - tmp-data:/webapp/tmp
+      - public-data:/keyaki/public
+      - tmp-data:/keyaki/tmp
     ports:
-      - 80:80
+      - 8000:80
     depends_on:
       - app
+    container_name: KEYAKI_web
 volumes:
   public-data:
   tmp-data:
