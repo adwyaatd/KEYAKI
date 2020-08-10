@@ -1,0 +1,26 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= Rails.application.credentials.MYSQL_USER %>
+  password: <%= Rails.application.credentials.MYSQL_PASSWORD %>
+  host: localhost
+
+development:
+  <<: *default
+  database: KEYAKI_app_development
+
+test:
+  <<: *default
+  database: KEYAKI_app_test
+
+production:
+  <<: *default
+  database: <%= ENV['DB_DATABASE'] %>
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
